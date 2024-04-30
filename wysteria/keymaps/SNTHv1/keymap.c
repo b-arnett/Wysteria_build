@@ -3,8 +3,7 @@
 
 #include QMK_KEYBOARD_H
 
-#define LSFT(kc) (QK_LSFT | (kc))
-#define LSG(kc) (QK_LSFT | QK_LGUI | (kc))
+
 
 /* TAPDANCE */
 typedef enum {
@@ -64,11 +63,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     //  NUMPAD LAYER
     [1] = LAYOUT_wyst_custom(
-        KC_Q, KC_W, KC_UP, KC_R, KC_T,    KC_EQUAL, KC_7, KC_8, KC_9, KC_PSLS,
-        KC_S, KC_LEFT, KC_DOWN, KC_RIGHT, KC_V,     KC_G, KC_4, KC_5, KC_6, KC_PAST,
-        KC_F, KC_B, KC_K, KC_L, KC_J,     KC_0, KC_1, KC_2, KC_3, KC_KP_PLUS,
+        KC_Q, KC_W, KC_UP, KC_R, KC_T,              KC_PMNS, KC_7, KC_8, KC_9, KC_PSLS,
+        KC_S, KC_LEFT, KC_DOWN, KC_RIGHT, KC_V,     KC_PPLS, KC_4, KC_5, KC_6, KC_PAST,
+        KC_F, KC_B, KC_K, KC_L, KC_J,               KC_0, KC_1, KC_2, KC_3, KC_PEQL,
 
-        KC_TRNS, KC_R, KC_BACKSPACE, KC_TRNS,       KC_SPC, KC_DOT, KC_PMNS, KC_TRNS  // ONESHOT TO L1,  double t to move to layer
+        KC_TRNS, KC_R, KC_BACKSPACE, KC_TRNS,       KC_SPC, KC_TRNS, KC_PMNS, KC_TRNS  // ONESHOT TO L1,  double t to move to layer
         ),
   
     [2] = LAYOUT_wyst_custom(
@@ -264,6 +263,9 @@ void bcsp_finished(tap_dance_state_t *state, void *user_data) {
                 layer_on(1);
             }
             break;
+        case TD_DOUBLE_HOLD:
+            register_code16(LALT(KC_BACKSPACE));
+            break;
         default:
             break;
     }
@@ -295,60 +297,3 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-
-
-
-
-
-
-/* // Determine the tapdance state to return
-td_state_t cur_dance(tap_dance_state_t *state) {
-    if (state->count == 1) {
-        if (state->interrupted || !state->pressed) return TD_SINGLE_TAP;
-        else return TD_SINGLE_HOLD;
-    }
-
-    if (state->count == 2) return TD_DOUBLE_SINGLE_TAP;
-    else return TD_UNKNOWN; // Any number higher than the maximum state value you return above
-}
-
-// Handle the possible states for each tapdance keycode you define:
-
-void altlp_finished(tap_dance_state_t *state, void *user_data) {
-    td_state = cur_dance(state);
-    switch (td_state) {
-        case TD_SINGLE_TAP:
-            register_code16(KC_LPRN);
-            break;
-        case TD_SINGLE_HOLD:
-            register_mods(MOD_BIT(KC_LALT)); // For a layer-tap key, use `layer_on(_MY_LAYER)` here
-            break;
-        case TD_DOUBLE_SINGLE_TAP: // Allow nesting of 2 parens `((` within tapping term
-            tap_code16(KC_LPRN);
-            register_code16(KC_LPRN);
-            break;
-        default:
-            break;
-    }
-}
-
-void altlp_reset(tap_dance_state_t *state, void *user_data) {
-    switch (td_state) {
-        case TD_SINGLE_TAP:
-            unregister_code16(KC_LPRN);
-            break;
-        case TD_SINGLE_HOLD:
-            unregister_mods(MOD_BIT(KC_LALT)); // For a layer-tap key, use `layer_off(_MY_LAYER)` here
-            break;
-        case TD_DOUBLE_SINGLE_TAP:
-            unregister_code16(KC_LPRN);
-            break;
-        default:
-            break;
-    }
-}
-
-// Define `ACTION_TAP_DANCE_FN_ADVANCED()` for each tapdance keycode, passing in `finished` and `reset` functions
-tap_dance_action_t tap_dance_actions[] = {
-    [ALT_LP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, altlp_finished, altlp_reset)
-}; */
