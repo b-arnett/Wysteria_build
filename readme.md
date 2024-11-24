@@ -1,6 +1,10 @@
 # wysteria
 
-![wysteria](imgur.com image replace me!)
+My qmk build for the Wysteria (created by J-W-E)
+Uses Elite Pi Microcontrollers
+
+Currently have issues with encoder pins being redefined 
+
 
 *JWE's custom 36-key keyboard*
 
