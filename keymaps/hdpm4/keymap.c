@@ -2,12 +2,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#define ENCODER_MAP_ENABLE
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = { ENCODER_CCW_CW(KC_UP, KC_DOWN),     ENCODER_CCW_CW(KC_LEFT, KC_RIGHT)  },
+    [0] = { ENCODER_CCW_CW(KC_UP, KC_DOWN),        ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
     [1] = { ENCODER_CCW_CW(KC_BRID, KC_BRIU),      ENCODER_CCW_CW(KC_PGDN, KC_PGUP)  },
-    [2] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS),           ENCODER_CCW_CW(KC_BRIU, KC_BRID)  },
+    [2] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS),      ENCODER_CCW_CW(KC_BRIU, KC_BRID)  },
     
 };
 #endif

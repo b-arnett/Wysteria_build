@@ -1,4 +1,6 @@
-
+# RP2040-specific options
+ALLOW_WARNINGS = yes
+PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.
 
 SWAP_HANDS_ENABLE = no
 
@@ -8,4 +10,3 @@ OLED_DRIVER = ssd1306
 OLED_TRANSPORT = i2c
 
 ENCODER_ENABLE = yes
-ENCODER_MAP_ENABLE = yes

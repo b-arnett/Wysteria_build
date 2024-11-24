@@ -3,7 +3,7 @@
 
 #pragma once
 
-#define MASTER_RIGHT
+#define MASTER_LEFT
 
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 
@@ -26,8 +26,10 @@
 #define I2C1_SDA_PIN        GP2
 /* #define I2C_DRIVER I2CD0 */
 
-#define ENCODERS_A_PINS { GP9 }
-#define ENCODERS_B_PINS { GP8 }
-#define ENCODERS_A_PINS_RIGHT { GP8 }
-#define ENCODERS_B_PINS_RIGHT { GP9 }
+#define ENCODER_A_PINS { GP9 }
+#define ENCODER_B_PINS { GP8 }
+#define ENCODER_A_PINS_RIGHT { GP8 }
+#define ENCODER_B_PINS_RIGHT { GP9 }
+
 #define ENCODER_RESOLUTIONS { 2 }
+#define ENCODER_MAP_KEY_DELAY 10
