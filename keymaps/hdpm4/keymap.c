@@ -15,9 +15,9 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
    [0] = LAYOUT_wyst_custom(
-        KC_F, KC_P, KC_D, KC_L, KC_X,                                                           KC_SCLN, KC_U, KC_O, KC_Y, KC_Q,
+        KC_F, KC_P, KC_D, KC_L, KC_X,                                                           KC_SCLN, KC_U, KC_O, KC_Y, KC_Z,
         MT(MOD_LSFT, KC_S), MT(MOD_LCTL, KC_N), KC_T, KC_H, KC_K,                                 KC_DOT, KC_A, KC_E, MT(MOD_LCTL, KC_I), MT(MOD_RSFT, KC_C),        
-        MT(MOD_LGUI, KC_V), MT(MOD_LALT, KC_B), KC_G, KC_L, KC_J,                       KC_MINUS, KC_COMMA, KC_QUOTE, MT(MOD_LALT, KC_EQUAL), MT(MOD_RGUI, KC_SLASH),
+        MT(MOD_LGUI, KC_V), MT(MOD_LALT, KC_B), KC_G, KC_L, KC_J,                       KC_MINUS, KC_COMMA, KC_QUOTE, MT(MOD_LALT, KC_SLASH), MT(MOD_RGUI, KC_Q),
 
                                             KC_BSPC, KC_R, TG(1), KC_MPLY,                  KC_MPLY, KC_ENT, KC_SPACE, TG(2)
     ),  
